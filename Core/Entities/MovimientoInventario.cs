@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class MovimientoInventario
+public class MovimientoInventario : BaseEntity
 {
     [Required]
     public string IdMovimientoInventario { get; set; }
