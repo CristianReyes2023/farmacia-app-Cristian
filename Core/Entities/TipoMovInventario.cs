@@ -9,4 +9,5 @@ public class TipoMovInventario : BaseEntity
 {
     [Required]
     public string NombreTipoMovInventario { get; set; }
+    public ICollection<MovimientoInventario> MovimientoInventarios { get; set; }
 }

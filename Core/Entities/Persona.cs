@@ -20,5 +20,7 @@ public class Persona
     public RolPersona RolPersonas { get; set; }
     public int IdTipoPersonaFk { get; set; }
     public TipoPersona TipoPersonas { get; set; }
-    public UbicacionPersona UbicacionPersona { get; set; }
+    public ICollection<UbicacionPersona> UbicacionPersonas { get; set; }
+    public ICollection<ContactoPersona> ContactoPersonas { get; set; }
+    public ICollection<MovimientoInventario> MovimientoInventarios { get; set; }
 }

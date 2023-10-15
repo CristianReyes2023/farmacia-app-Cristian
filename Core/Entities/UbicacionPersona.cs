@@ -8,14 +8,14 @@ public class UbicacionPersona : BaseEntity
 {
     public string TipoDeVia { get; set; }
     public int NumeroPri { get; set; }
-    public string Letra { get; set; }
-    public string Bis { get; set; }
-    public string LetraSec { get; set; }
-    public string Cardinal { get; set; }
+    public char Letra { get; set; }
+    public char Bis { get; set; }
+    public char LetraSec { get; set; }
+    public char Cardinal { get; set; }
     public int NumeroSec { get; set; }
-    public string LetraTer { get; set; }
+    public char LetraTer { get; set; }
     public int NumeroTer { get; set; }
-    public string CardinalSec { get; set; }
+    public char CardinalSec { get; set; }
     public string Complemento { get; set; }
     public string CodigoPostal { get; set; }
     public string IdPersonaFk { get; set; }

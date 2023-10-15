@@ -21,5 +21,8 @@ public class Inventario
     public int StockMax { get; set; }
     public string CodProductoFk { get; set; }
     public Producto Productos { get; set; }
+    public int IdPresentacionFk { get; set; }
+    public ICollection<Presentacion> Presentaciones {get;set;}
+    public ICollection<DetalleMovInventario> DetalleMovInventarios { get; set; }
 
 }

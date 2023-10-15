@@ -9,4 +9,5 @@ public class FormaPago : BaseEntity
 {
     [Required]
     public string NombreFormaPago { get; set; }
+    public ICollection<MovimientoInventario> MovimientoInventarios { get; set; }
 }

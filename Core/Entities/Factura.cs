@@ -1,12 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core.Entities
+namespace Core.Entities;
+public class Factura : BaseEntity
 {
-    public class Factura
-    {
-        
-    }
+    [Required]
+    public int FacturaInicial { get; set; }
+    [Required]
+    public int FacturaFinal { get; set; }
+    [Required]
+    public int FacturaActual { get; set; }
+    public string NroResolucion { get; set; }
+    
 }

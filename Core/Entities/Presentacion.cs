@@ -9,5 +9,6 @@ public class Presentacion : BaseEntity
 {
     [Required]
     public string NombrePresentacion { get; set; }
+    public ICollection<Inventario> Inventarios { get; set; }
     
 }

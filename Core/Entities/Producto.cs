@@ -13,4 +13,6 @@ public class Producto
     public string NombreProducto { get; set; }
     public int IdMarcaFk { get; set; }
     public Marca Marcas { get; set; }
+    public Inventario Inventarios { get; set; }
+
 }
