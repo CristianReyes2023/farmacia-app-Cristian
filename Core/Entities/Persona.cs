@@ -20,7 +20,8 @@ public class Persona : BaseEntity
     public RolPersona RolPersonas { get; set; }
     public int IdTipoPersonaFk { get; set; }
     public TipoPersona TipoPersonas { get; set; }
-    public ICollection<UbicacionPersona> UbicacionPersonas { get; set; }
+    public UbicacionPersona UbicacionPersonas { get; set; }
     public ICollection<ContactoPersona> ContactoPersonas { get; set; }
     public ICollection<MovimientoInventario> MovimientoInventarios { get; set; }
+    public object UbicacionPersona { get; set; }
 }

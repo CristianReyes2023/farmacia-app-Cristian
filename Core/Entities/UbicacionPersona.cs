@@ -19,8 +19,8 @@ public class UbicacionPersona : BaseEntity
     public string Complemento { get; set; }
     public string CodigoPostal { get; set; }
     public string IdPersonaFk { get; set; }
-    public Persona Persona { get; set; }
+    public Persona Personas { get; set; }
     public int IdCiudadFk { get; set; }
-    public Ciudad Ciudad { get; set; }
+    public Ciudad Ciudades { get; set; }
 
 }
