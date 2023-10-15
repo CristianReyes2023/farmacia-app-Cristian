@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -46,125 +47,211 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             return _ciudades;
         }
     }
-    public ICiudad Ciudades
+    public IContactoPersona ContactoPersonas
     {
         get
         {
-            if (_ciudades == null)
+            if (_contactopersonas == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _contactopersonas = new ContactoPersonaRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _contactopersonas;
         }
     }
-    public ICiudad Ciudades
+    public IDepartamento Departamentos
     {
         get
         {
-            if (_ciudades == null)
+            if (_departamentos == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _departamentos = new DepartamentoRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _departamentos;
         }
     }
-    public ICiudad Ciudades
+    public IDetalleMovInventario DetalleMovInventarios
     {
         get
         {
-            if (_ciudades == null)
+            if (_detallemovinvetarios == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _detallemovinvetarios = new DetalleMovInventarioRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _detallemovinvetarios;
         }
     }
-    public ICiudad Ciudades
+    public IFactura Facturas
     {
         get
         {
-            if (_ciudades == null)
+            if (_facturas == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _facturas = new FacturaRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _facturas;
         }
     }
-    public ICiudad Ciudades
+    public IFormaPago FormaPagos
     {
         get
         {
-            if (_ciudades == null)
+            if (_formatopagos == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _formatopagos = new FormaPagoRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _formatopagos;
         }
     }
-    public ICiudad Ciudades
+    public IInventario Inventarios
     {
         get
         {
-            if (_ciudades == null)
+            if (_inventarios == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _inventarios = new InventarioRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _inventarios;
         }
     }
-    public ICiudad Ciudades
+    public IMarca Marcas
     {
         get
         {
-            if (_ciudades == null)
+            if (_marcas == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _marcas = new MarcaRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _marcas;
         }
     }
-    public ICiudad Ciudades
+    public IMovimientoInventario MovimientoInventarios
     {
         get
         {
-            if (_ciudades == null)
+            if (_movimientoinventarios == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _movimientoinventarios = new MovimientoInventarioRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _movimientoinventarios;
         }
     }
-    public ICiudad Ciudades
+    public IPais Paises
     {
         get
         {
-            if (_ciudades == null)
+            if (_paises == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _paises = new PaisRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _paises;
         }
     }
-    public ICiudad Ciudades
+    public IPersona Personas
     {
         get
         {
-            if (_ciudades == null)
+            if (_personas == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _personas = new PersonaRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _personas;
         }
     }
-    public ICiudad Ciudades
+    public IPresentacion Presentaciones
     {
         get
         {
-            if (_ciudades == null)
+            if (_presentaciones == null)
             {
-                _ciudades = new CiudadRepository(_context); // Remember putting the base in the repository of this entity
+                _presentaciones = new PresentacionRepository(_context); // Remember putting the base in the repository of this entity
             }
-            return _ciudades;
+            return _presentaciones;
         }
+    }
+    public IProducto Productos
+    {
+        get
+        {
+            if (_productos == null)
+            {
+                _productos = new ProductoRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _productos;
+        }
+    }
+    public IRolPersona RolPersonas
+    {
+        get
+        {
+            if (_rolpersonas == null)
+            {
+                _rolpersonas = new RolPersonaRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _rolpersonas;
+        }
+    }
+    public ITipoContacto TipoContactos
+    {
+        get
+        {
+            if (_tipocontactos == null)
+            {
+                _tipocontactos = new TipoContactoRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _tipocontactos;
+        }
+    }
+    public ITipoDocumento TipoDocumentos
+    {
+        get
+        {
+            if (_tipodocumento == null)
+            {
+                _tipodocumento = new TipoDocumentoRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _tipodocumento;
+        }
+    }
+    public ITipoMovInventario TipoMovInventarios
+    {
+        get
+        {
+            if (_tipomovinventarios == null)
+            {
+                _tipomovinventarios = new TipoMovInventarioRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _tipomovinventarios;
+        }
+    }
+    public ITipoPersona TipoPersonas
+    {
+        get
+        {
+            if (_tipopersonas == null)
+            {
+                _tipopersonas = new TipoPersonaRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _tipopersonas;
+        }
+    }
+    public IUbicacionPersona UbicacionPersonas
+    {
+        get
+        {
+            if (_ubicacionpersonas == null)
+            {
+                _ubicacionpersonas = new UbicacionPersonaRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _ubicacionpersonas;
+        }
+    }
+    public Task<int> SaveAsync()
+    {
+        return _context.SaveChangesAsync();
+    }
+
+    public void Dispose()
+    {
+        _context.Dispose();
     }
 }
