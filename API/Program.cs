@@ -1,3 +1,5 @@
+using API.Extensions;
+using AspNetCoreRateLimit;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.ConfigureCors();
+builder.Services.ConfigureRateLimiting();
+builder.Services.AddApplicationServices();
 
 builder.Services.AddDbContext<FarmaciaContext>(optionsBuilder =>
 {
@@ -26,7 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseCors("CorsPolicy");
+app.UseIpRateLimiting();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
