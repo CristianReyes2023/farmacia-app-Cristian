@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Dtos;
-public class TipoMovimientoDto
+public class TipoMovInventarioDto
 {
     public int Id { get; set; }
     public string NombreTipoMovInventario { get; set; }
