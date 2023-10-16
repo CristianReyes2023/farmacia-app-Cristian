@@ -14,5 +14,6 @@ public class Factura : BaseEntity
     [Required]
     public int FacturaActual { get; set; }
     public string NroResolucion { get; set; }
+    public ICollection<MovimientoInventario> MovimientoInventarios { get; set; }
     
 }

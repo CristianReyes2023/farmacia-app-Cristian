@@ -23,5 +23,4 @@ public class Persona : BaseEntity
     public UbicacionPersona UbicacionPersonas { get; set; }
     public ICollection<ContactoPersona> ContactoPersonas { get; set; }
     public ICollection<MovimientoInventario> MovimientoInventarios { get; set; }
-    public object UbicacionPersona { get; set; }
 }
