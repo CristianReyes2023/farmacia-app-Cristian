@@ -12,8 +12,8 @@ public class DetalleMovInventario : BaseEntity
     [Required]
     public double Precio { get; set; }
     [Required]
-    public int IdInventarionFk { get; set; }
+    public string IdInventarionFk { get; set; }
     public Inventario Inventarios { get; set; }
-    public int IdMovInvFk { get; set; }
+    public string IdMovInvFk { get; set; }
     public MovimientoInventario MovimientoInventarios { get; set; }
 }

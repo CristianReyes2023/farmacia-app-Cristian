@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 namespace API.Dtos;
 public class ProductoDto
 {
-    public int Id { get; set; }
-    public string CodigoProducto { get; set; }
+    public string Id { get; set; }
     public string NombreProducto { get; set; }
     public int IdMarcaFk { get; set; }
 }

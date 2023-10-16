@@ -45,11 +45,11 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProductoDto>> Put(int id, [FromBody] ProductoDto productoDto)
+        public async Task<ActionResult<ProductoDto>> Put(string id, [FromBody] ProductoDto productoDto)
         {
             if(productoDto == null)
                 return NotFound();
-            if(productoDto.Id == 0)
+            if(productoDto.Id == null)
             {
                 productoDto.Id = id;
             } 
@@ -65,7 +65,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             var producto = await _unitOfWork.Productos.GetByIdAsync(id);
             if (producto == null)
@@ -80,7 +80,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProductoDto>> Get(int Id)
+        public async Task<ActionResult<ProductoDto>> Get(string Id)
         {
             var producto = await _unitOfWork.Productos.GetByIdAsync(Id);
             if (producto == null)

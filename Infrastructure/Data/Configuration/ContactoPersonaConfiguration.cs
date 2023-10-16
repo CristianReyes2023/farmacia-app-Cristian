@@ -16,6 +16,6 @@ public class ContactoPersonaConfiguration : IEntityTypeConfiguration<ContactoPer
         builder.HasKey(x=>x.Id);
 
         builder.HasOne(x=>x.Personas).WithMany(x=>x.ContactoPersonas).HasForeignKey(x=>x.IdPersonaFk);
-        builder.HasOne(x=>x.TipoContactos).WithMany(x=>x.ContactoPersonas).HasForeignKey(x=>x.IdPersonaFk);
+        builder.HasOne(x=>x.TipoContactos).WithMany(x=>x.ContactoPersonas).HasForeignKey(x=>x.IdTipoContactoFk);
     }
 }

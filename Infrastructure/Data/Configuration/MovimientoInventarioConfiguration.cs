@@ -15,7 +15,7 @@ public class MovimientoInventarioConfiguration : IEntityTypeConfiguration<Movimi
         builder.ToTable("movimientoinventario");
 
         builder.HasKey(x=>x.Id);
-        builder.Property(x=>x.IdMovimientoInventario).IsRequired().HasMaxLength(10);
+        builder.Property(x=>x.Id).HasMaxLength(10);
 
         builder.Property(x=>x.FechaMovimiento).HasColumnType("date");
         builder.Property(x=>x.FechaVencimiento).HasColumnType("date");

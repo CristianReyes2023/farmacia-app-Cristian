@@ -19,6 +19,6 @@ public class UbicacionPersonaDto
     public char CardinalSec { get; set; }
     public string Complemento { get; set; }
     public string CodigoPostal { get; set; }
-    public int IdPersonaFk { get; set; }
+    public string IdPersonaFk { get; set; }
     public int IdCiudadFk { get; set; }
 }

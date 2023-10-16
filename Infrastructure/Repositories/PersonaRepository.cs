@@ -7,7 +7,7 @@ using Core.Interfaces;
 using Infrastructure.Data;
 
 namespace Infrastructure.Repositories;
-public class PersonaRepository : GenericRepository<Persona>, IPersona
+public class PersonaRepository : GenericRepositoryString<Persona>, IPersona
 {
     private readonly FarmaciaContext _context;
 

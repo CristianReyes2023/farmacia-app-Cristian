@@ -45,11 +45,11 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<InventarioDto>> Put(int id, [FromBody] InventarioDto inventarioDto)
+        public async Task<ActionResult<InventarioDto>> Put(string id, [FromBody] InventarioDto inventarioDto)
         {
             if(inventarioDto == null)
                 return NotFound();
-            if(inventarioDto.Id == 0)
+            if(inventarioDto.Id == null)
             {
                 inventarioDto.Id = id;
             } 
@@ -65,7 +65,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             var inventario = await _unitOfWork.Inventarios.GetByIdAsync(id);
             if (inventario == null)
@@ -80,7 +80,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<InventarioDto>> Get(int Id)
+        public async Task<ActionResult<InventarioDto>> Get(string Id)
         {
             var inventario = await _unitOfWork.Inventarios.GetByIdAsync(Id);
             if (inventario == null)

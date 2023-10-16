@@ -15,7 +15,8 @@ public class InventarioConfiguration : IEntityTypeConfiguration<Inventario>
         builder.ToTable("inventario");
 
         builder.HasKey(x=>x.Id);
-        builder.Property(x=>x.IdInventario).IsRequired().HasMaxLength(10);
+        builder.Property(x=>x.Id).HasMaxLength(10);
+
         builder.Property(x=>x.NombreInventario).IsRequired().HasMaxLength(50);
 
         builder.Property(x=>x.Precio).HasColumnType("double");

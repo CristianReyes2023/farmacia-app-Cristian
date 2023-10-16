@@ -14,8 +14,8 @@ public class ProductoConfiguration : IEntityTypeConfiguration<Producto>
         builder.ToTable("producto");
 
         builder.HasKey(x=>x.Id);
+        builder.Property(x=>x.Id).HasMaxLength(50);
 
-        builder.Property(x=>x.CodigoProducto).IsRequired().HasMaxLength(10);
         builder.Property(x=>x.NombreProducto).IsRequired().HasMaxLength(50);
 
         builder.HasOne(x=>x.Marcas).WithMany(x=>x.Productos).HasForeignKey(x=>x.IdMarcaFk);

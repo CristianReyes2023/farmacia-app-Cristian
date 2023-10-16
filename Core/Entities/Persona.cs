@@ -5,10 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class Persona : BaseEntity
+public class Persona : BaseEntityString
 {
-    [Required]
-    public string IdPersona {get;set;}
     [Required]
     public string NombrePersona { get; set; }
     [Required]

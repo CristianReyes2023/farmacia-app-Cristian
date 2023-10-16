@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(FarmaciaContext))]
-    [Migration("20231016015204_SecondMigrations")]
-    partial class SecondMigrations
+    [Migration("20231016203208_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,8 +49,8 @@ namespace Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPersonaFk")
-                        .HasColumnType("int");
+                    b.Property<string>("IdPersonaFk")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("IdTipoContactoFk")
                         .HasColumnType("int");
@@ -58,6 +58,8 @@ namespace Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdPersonaFk");
+
+                    b.HasIndex("IdTipoContactoFk");
 
                     b.ToTable("contactopersona", (string)null);
                 });
@@ -92,11 +94,12 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdInventarionFk")
-                        .HasColumnType("int");
+                    b.Property<string>("IdInventarionFk")
+                        .IsRequired()
+                        .HasColumnType("varchar(10)");
 
-                    b.Property<int>("IdMovInvFk")
-                        .HasColumnType("int");
+                    b.Property<string>("IdMovInvFk")
+                        .HasColumnType("varchar(10)");
 
                     b.Property<double>("Precio")
                         .HasColumnType("double");
@@ -153,17 +156,12 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Inventario", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdCodProductoFk")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IdInventario")
-                        .IsRequired()
+                    b.Property<string>("Id")
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
+
+                    b.Property<string>("IdCodProductoFk")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("IdPresentacionFk")
                         .HasColumnType("int");
@@ -213,9 +211,9 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.MovimientoInventario", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<DateOnly>("FechaMovimiento")
                         .HasColumnType("date");
@@ -229,13 +227,8 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("IdFormaPagoFk")
                         .HasColumnType("int");
 
-                    b.Property<string>("IdMovimientoInventario")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
-
-                    b.Property<int>("IdResponsableFk")
-                        .HasColumnType("int");
+                    b.Property<string>("IdResponsableFk")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("IdTipoMovInvFk")
                         .HasColumnType("int");
@@ -271,17 +264,12 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Persona", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<DateOnly>("FechaRegistro")
                         .HasColumnType("date");
-
-                    b.Property<string>("IdPersona")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
 
                     b.Property<int>("IdRolPersonaFk")
                         .HasColumnType("int");
@@ -326,14 +314,9 @@ namespace Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Producto", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("CodigoProducto")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
+                    b.Property<string>("Id")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("IdMarcaFk")
                         .HasColumnType("int");
@@ -464,8 +447,8 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("IdCiudadFk")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPersonaFk")
-                        .HasColumnType("int");
+                    b.Property<string>("IdPersonaFk")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Letra")
                         .IsRequired()
@@ -522,13 +505,11 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.Persona", "Personas")
                         .WithMany("ContactoPersonas")
-                        .HasForeignKey("IdPersonaFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPersonaFk");
 
                     b.HasOne("Core.Entities.TipoContacto", "TipoContactos")
                         .WithMany("ContactoPersonas")
-                        .HasForeignKey("IdPersonaFk")
+                        .HasForeignKey("IdTipoContactoFk")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -558,9 +539,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasOne("Core.Entities.MovimientoInventario", "MovimientoInventarios")
                         .WithMany("DetalleMovInventarios")
-                        .HasForeignKey("IdMovInvFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdMovInvFk");
 
                     b.Navigation("Inventarios");
 
@@ -571,9 +550,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.Producto", "Productos")
                         .WithOne("Inventarios")
-                        .HasForeignKey("Core.Entities.Inventario", "IdCodProductoFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Core.Entities.Inventario", "IdCodProductoFk");
 
                     b.HasOne("Core.Entities.Presentacion", "Presentaciones")
                         .WithMany("Inventarios")
@@ -602,9 +579,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasOne("Core.Entities.Persona", "PersonaResponsable")
                         .WithMany("MovimientoInventarios")
-                        .HasForeignKey("IdResponsableFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdResponsableFk");
 
                     b.HasOne("Core.Entities.TipoMovInventario", "TipoMovInventarios")
                         .WithMany("MovimientoInventarios")
@@ -669,9 +644,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasOne("Core.Entities.Persona", "Personas")
                         .WithOne("UbicacionPersonas")
-                        .HasForeignKey("Core.Entities.UbicacionPersona", "IdPersonaFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Core.Entities.UbicacionPersona", "IdPersonaFk");
 
                     b.Navigation("Ciudades");
 

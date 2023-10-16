@@ -5,10 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class MovimientoInventario : BaseEntity
+public class MovimientoInventario : BaseEntityString
 {
-    [Required]
-    public string IdMovimientoInventario { get; set; }
     [Required]
     public DateOnly FechaMovimiento { get; set; }
     [Required]
@@ -16,7 +14,7 @@ public class MovimientoInventario : BaseEntity
     [Required]
     public int IdFormaPagoFk { get; set; }
     public FormaPago FormaPagos { get; set; }
-    public int IdResponsableFk { get; set; }
+    public string IdResponsableFk { get; set; }
     public Persona PersonaResponsable { get; set; }
     // public string IdReceptor { get; set; }
     // public Persona PersonaReceptor { get; set; }
