@@ -80,9 +80,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PresentacionDto>> Get(int Id)
+        public async Task<ActionResult<PresentacionDto>> Get(int id)
         {
-            var presentacion = await _unitOfWork.Presentaciones.GetByIdAsync(Id);
+            var presentacion = await _unitOfWork.Presentaciones.GetByIdAsync(id);
             if (presentacion == null)
             {
                 return NotFound();

@@ -80,9 +80,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<FacturaDto>> Get(int Id)
+        public async Task<ActionResult<FacturaDto>> Get(int id)
         {
-            var factura = await _unitOfWork.Facturas.GetByIdAsync(Id);
+            var factura = await _unitOfWork.Facturas.GetByIdAsync(id);
             if (factura == null)
             {
                 return NotFound();

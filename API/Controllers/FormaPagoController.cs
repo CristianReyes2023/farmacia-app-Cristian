@@ -80,9 +80,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<FormaPagoDto>> Get(int Id)
+        public async Task<ActionResult<FormaPagoDto>> Get(int id)
         {
-            var formapago = await _unitOfWork.FormaPagos.GetByIdAsync(Id);
+            var formapago = await _unitOfWork.FormaPagos.GetByIdAsync(id);
             if (formapago == null)
             {
                 return NotFound();

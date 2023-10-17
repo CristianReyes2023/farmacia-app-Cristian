@@ -80,9 +80,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TipoMovInventarioDto>> Get(int Id)
+        public async Task<ActionResult<TipoMovInventarioDto>> Get(int id)
         {
-            var tipomov = await _unitOfWork.TipoMovInventarios.GetByIdAsync(Id);
+            var tipomov = await _unitOfWork.TipoMovInventarios.GetByIdAsync(id);
             if (tipomov == null)
             {
                 return NotFound();
