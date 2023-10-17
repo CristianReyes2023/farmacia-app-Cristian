@@ -76,7 +76,7 @@ namespace API.Controllers
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
