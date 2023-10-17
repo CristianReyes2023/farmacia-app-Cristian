@@ -7,11 +7,11 @@ using Core.Interfaces;
 using Infrastructure.Data;
 
 namespace Infrastructure.Repositories;
-public class FormatoPagoRepository : GenericRepository<FormaPago>, IFormaPago
+public class FormaPagoRepository : GenericRepository<FormaPago>, IFormaPago
 {
     private readonly FarmaciaContext _context;
 
-    public FormatoPagoRepository(FarmaciaContext context) : base(context)
+    public FormaPagoRepository(FarmaciaContext context) : base(context)
     {
         _context = context;
     }
