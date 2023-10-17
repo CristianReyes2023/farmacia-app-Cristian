@@ -19,10 +19,9 @@ public class Inventario : BaseEntity
     public int StockMin { get; set; }
     [Required]
     public int StockMax { get; set; }
-    public string CodProductoFk { get; set; }
+    public int IdCodProductoFk { get; set; }
     public Producto Productos { get; set; }
     public int IdPresentacionFk { get; set; }
     public Presentacion Presentaciones {get;set;}
     public ICollection<DetalleMovInventario> DetalleMovInventarios { get; set; }
-
 }

@@ -18,7 +18,7 @@ public class DetalleMovInventarioConfigurate : IEntityTypeConfiguration<DetalleM
         builder.Property(x=>x.Cantidad).HasColumnType("int");
         builder.Property(x=>x.Precio).HasColumnType("double");
 
-        builder.HasOne(x=>x.Inventarios).WithMany(x=>x.DetalleMovInventarios).HasForeignKey(x=>x.IdInvetarion);
+        builder.HasOne(x=>x.Inventarios).WithMany(x=>x.DetalleMovInventarios).HasForeignKey(x=>x.IdInventarionFk);
         builder.HasOne(x=>x.MovimientoInventarios).WithMany(x=>x.DetalleMovInventarios).HasForeignKey(x=>x.IdMovInvFk);
     }
 }
