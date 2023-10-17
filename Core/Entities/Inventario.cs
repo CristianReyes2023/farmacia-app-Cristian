@@ -22,7 +22,7 @@ public class Inventario : BaseEntity
     public string CodProductoFk { get; set; }
     public Producto Productos { get; set; }
     public int IdPresentacionFk { get; set; }
-    public ICollection<Presentacion> Presentaciones {get;set;}
+    public Presentacion Presentaciones {get;set;}
     public ICollection<DetalleMovInventario> DetalleMovInventarios { get; set; }
 
 }
