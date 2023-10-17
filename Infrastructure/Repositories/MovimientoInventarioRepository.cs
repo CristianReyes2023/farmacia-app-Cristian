@@ -7,7 +7,7 @@ using Core.Interfaces;
 using Infrastructure.Data;
 
 namespace Infrastructure.Repositories;
-public class MovimientoInventarioRepository : GenericRepository<MovimientoInventario>, IMovimientoInventario
+public class MovimientoInventarioRepository : GenericRepositoryString<MovimientoInventario>, IMovimientoInventario
 {
     private readonly FarmaciaContext _context;
 

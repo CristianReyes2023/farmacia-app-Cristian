@@ -7,6 +7,6 @@ namespace API.Dtos;
 public class ContactoPersonaDto
 {
     public int Id { get; set; }
-    public int IdPersonaFk { get; set; }
+    public string IdPersonaFk { get; set; }
     public int IdTipoContactoFk { get; set; }
 }

@@ -1,3 +1,4 @@
+using System.Reflection;
 using API.Extensions;
 using AspNetCoreRateLimit;
 using Infrastructure.Data;
@@ -11,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureRateLimiting();
 builder.Services.AddApplicationServices();
-
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 builder.Services.AddDbContext<FarmaciaContext>(optionsBuilder =>
 {
     string connectionString = builder.Configuration.GetConnectionString("MySqlConex");

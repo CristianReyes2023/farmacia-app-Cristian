@@ -14,8 +14,8 @@ public class PersonaConfiguration : IEntityTypeConfiguration<Persona>
         builder.ToTable("persona");
 
         builder.HasKey(x=>x.Id);
+        builder.Property(x=>x.Id).HasMaxLength(50);
 
-        builder.Property(x=>x.IdPersona).IsRequired().HasMaxLength(20);
         builder.Property(x=>x.NombrePersona).IsRequired().HasMaxLength(50);
         builder.Property(x=>x.FechaRegistro).HasColumnType("date");
 

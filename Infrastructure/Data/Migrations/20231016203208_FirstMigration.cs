@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigrations : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -172,9 +172,7 @@ namespace Infrastructure.Data.Migrations
                 name: "producto",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CodigoProducto = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
+                    Id = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NombreProducto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -218,9 +216,7 @@ namespace Infrastructure.Data.Migrations
                 name: "persona",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdPersona = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
+                    Id = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NombrePersona = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -257,9 +253,7 @@ namespace Infrastructure.Data.Migrations
                 name: "inventario",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdInventario = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
+                    Id = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NombreInventario = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -267,7 +261,8 @@ namespace Infrastructure.Data.Migrations
                     Stock = table.Column<int>(type: "int", nullable: false),
                     StockMin = table.Column<int>(type: "int", nullable: false),
                     StockMax = table.Column<int>(type: "int", nullable: false),
-                    IdCodProductoFk = table.Column<int>(type: "int", nullable: false),
+                    IdCodProductoFk = table.Column<string>(type: "varchar(50)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     IdPresentacionFk = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -283,8 +278,7 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_inventario_producto_IdCodProductoFk",
                         column: x => x.IdCodProductoFk,
                         principalTable: "producto",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -316,7 +310,8 @@ namespace Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdPersonaFk = table.Column<int>(type: "int", nullable: false),
+                    IdPersonaFk = table.Column<string>(type: "varchar(50)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     IdTipoContactoFk = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -326,11 +321,10 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_contactopersona_persona_IdPersonaFk",
                         column: x => x.IdPersonaFk,
                         principalTable: "persona",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_contactopersona_tipocontacto_IdPersonaFk",
-                        column: x => x.IdPersonaFk,
+                        name: "FK_contactopersona_tipocontacto_IdTipoContactoFk",
+                        column: x => x.IdTipoContactoFk,
                         principalTable: "tipocontacto",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -341,19 +335,25 @@ namespace Infrastructure.Data.Migrations
                 name: "movimientoinventario",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdMovimientoInventario = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
+                    Id = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FechaMovimiento = table.Column<DateOnly>(type: "date", nullable: false),
                     FechaVencimiento = table.Column<DateOnly>(type: "date", nullable: false),
                     IdFormaPagoFk = table.Column<int>(type: "int", nullable: false),
-                    IdResponsableFk = table.Column<int>(type: "int", nullable: false),
-                    IdTipoMovInvFk = table.Column<int>(type: "int", nullable: false)
+                    IdResponsableFk = table.Column<string>(type: "varchar(50)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IdTipoMovInvFk = table.Column<int>(type: "int", nullable: false),
+                    IdFacturaFk = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_movimientoinventario", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_movimientoinventario_factura_IdFacturaFk",
+                        column: x => x.IdFacturaFk,
+                        principalTable: "factura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_movimientoinventario_formatopago_IdFormaPagoFk",
                         column: x => x.IdFormaPagoFk,
@@ -364,8 +364,7 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_movimientoinventario_persona_IdResponsableFk",
                         column: x => x.IdResponsableFk,
                         principalTable: "persona",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_movimientoinventario_tipomovinventario_IdTipoMovInvFk",
                         column: x => x.IdTipoMovInvFk,
@@ -402,7 +401,8 @@ namespace Infrastructure.Data.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CodigoPostal = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IdPersonaFk = table.Column<int>(type: "int", nullable: false),
+                    IdPersonaFk = table.Column<string>(type: "varchar(50)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     IdCiudadFk = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -418,8 +418,7 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_ubicacionpersona_persona_IdPersonaFk",
                         column: x => x.IdPersonaFk,
                         principalTable: "persona",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -431,8 +430,10 @@ namespace Infrastructure.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Cantidad = table.Column<int>(type: "int", nullable: false),
                     Precio = table.Column<double>(type: "double", nullable: false),
-                    IdInventarionFk = table.Column<int>(type: "int", nullable: false),
-                    IdMovInvFk = table.Column<int>(type: "int", nullable: false)
+                    IdInventarionFk = table.Column<string>(type: "varchar(10)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IdMovInvFk = table.Column<string>(type: "varchar(10)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -447,8 +448,7 @@ namespace Infrastructure.Data.Migrations
                         name: "FK_detallemovinventario_movimientoinventario_IdMovInvFk",
                         column: x => x.IdMovInvFk,
                         principalTable: "movimientoinventario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -461,6 +461,11 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_contactopersona_IdPersonaFk",
                 table: "contactopersona",
                 column: "IdPersonaFk");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_contactopersona_IdTipoContactoFk",
+                table: "contactopersona",
+                column: "IdTipoContactoFk");
 
             migrationBuilder.CreateIndex(
                 name: "IX_departamento_IdPaisFk",
@@ -487,6 +492,11 @@ namespace Infrastructure.Data.Migrations
                 name: "IX_inventario_IdPresentacionFk",
                 table: "inventario",
                 column: "IdPresentacionFk");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_movimientoinventario_IdFacturaFk",
+                table: "movimientoinventario",
+                column: "IdFacturaFk");
 
             migrationBuilder.CreateIndex(
                 name: "IX_movimientoinventario_IdFormaPagoFk",
@@ -546,9 +556,6 @@ namespace Infrastructure.Data.Migrations
                 name: "detallemovinventario");
 
             migrationBuilder.DropTable(
-                name: "factura");
-
-            migrationBuilder.DropTable(
                 name: "ubicacionpersona");
 
             migrationBuilder.DropTable(
@@ -568,6 +575,9 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "producto");
+
+            migrationBuilder.DropTable(
+                name: "factura");
 
             migrationBuilder.DropTable(
                 name: "formatopago");

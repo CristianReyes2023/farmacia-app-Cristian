@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace API.Dtos;
 public class PersonaDto
 {
-    public int Id { get; set; }
-    public string IdPersona { get; set; }
+
+    public string Id { get; set; }
     public string NombrePersona { get; set; }
     public DateOnly FechaRegistro { get; set; }
     public int IdTipoDocumentoFk { get; set; }

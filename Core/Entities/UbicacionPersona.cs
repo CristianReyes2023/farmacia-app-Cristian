@@ -18,7 +18,7 @@ public class UbicacionPersona : BaseEntity
     public char CardinalSec { get; set; }
     public string Complemento { get; set; }
     public string CodigoPostal { get; set; }
-    public int IdPersonaFk { get; set; }
+    public string IdPersonaFk { get; set; }
     public Persona Personas { get; set; }
     public int IdCiudadFk { get; set; }
     public Ciudad Ciudades { get; set; }

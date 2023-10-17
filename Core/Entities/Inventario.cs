@@ -5,10 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class Inventario : BaseEntity
+public class Inventario : BaseEntityString
 {
-    [Required]
-    public string IdInventario { get; set; }
     [Required]
     public string NombreInventario { get; set; }
     [Required]
@@ -19,7 +17,7 @@ public class Inventario : BaseEntity
     public int StockMin { get; set; }
     [Required]
     public int StockMax { get; set; }
-    public int IdCodProductoFk { get; set; }
+    public string IdCodProductoFk { get; set; }
     public Producto Productos { get; set; }
     public int IdPresentacionFk { get; set; }
     public Presentacion Presentaciones {get;set;}

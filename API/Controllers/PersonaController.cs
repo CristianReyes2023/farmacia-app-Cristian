@@ -45,11 +45,11 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PersonaDto>> Put(int id, [FromBody] PersonaDto personaDto)
+        public async Task<ActionResult<PersonaDto>> Put(string id, [FromBody] PersonaDto personaDto)
         {
             if(personaDto == null)
                 return NotFound();
-            if(personaDto.Id == 0)
+            if(personaDto.Id == null)
             {
                 personaDto.Id = id;
             } 
@@ -65,7 +65,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             var persona = await _unitOfWork.Personas.GetByIdAsync(id);
             if (persona == null)
@@ -80,9 +80,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PersonaDto>> Get(int Id)
+        public async Task<ActionResult<PersonaDto>> Get(string id)
         {
-            var persona = await _unitOfWork.Personas.GetByIdAsync(Id);
+            var persona = await _unitOfWork.Personas.GetByIdAsync(id);
             if (persona == null)
             {
                 return NotFound();

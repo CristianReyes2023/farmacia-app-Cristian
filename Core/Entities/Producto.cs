@@ -5,10 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class Producto : BaseEntity
+public class Producto : BaseEntityString
 {
-    [Required]
-    public string CodigoProducto { get; set; }
+
     [Required]
     public string NombreProducto { get; set; }
     public int IdMarcaFk { get; set; }
