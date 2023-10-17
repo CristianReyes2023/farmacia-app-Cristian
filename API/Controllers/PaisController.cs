@@ -87,9 +87,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PaisDto>> Get(int Id)
+        public async Task<ActionResult<PaisDto>> Get(int id)
         {
-            var pais = await _unitOfWork.Paises.GetByIdAsync(Id);
+            var pais = await _unitOfWork.Paises.GetByIdAsync(id);
             if (pais == null)
             {
                 return NotFound();
