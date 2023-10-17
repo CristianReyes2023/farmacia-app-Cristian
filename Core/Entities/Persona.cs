@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class Persona 
+public class Persona : BaseEntity
 {
     [Required]
     public string IdPersona {get;set;}

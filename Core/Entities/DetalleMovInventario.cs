@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Entities;
-public class DetalleMovInventario
+public class DetalleMovInventario : BaseEntity
 {
     [Required]
     public int Cantidad { get; set; }
