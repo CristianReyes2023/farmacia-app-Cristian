@@ -30,6 +30,9 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     private ITipoMovInventario _tipomovinventarios;
     private ITipoPersona _tipopersonas;
     private IUbicacionPersona _ubicacionpersonas;
+    private IBook _books;
+    private ICategory _categories;
+    private IBookCategory _bookcategories { get; set; }
     private readonly FarmaciaContext _context;
 
     public UnitOfWork(FarmaciaContext context)
@@ -243,6 +246,39 @@ public class UnitOfWork : IUnitOfWork, IDisposable
                 _ubicacionpersonas = new UbicacionPersonaRepository(_context); // Remember putting the base in the repository of this entity
             }
             return _ubicacionpersonas;
+        }
+    }
+    public IBook Books
+    {
+        get
+        {
+            if (_books == null)
+            {
+                _books = new BookRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _books;
+        }
+    }
+    public ICategory Categories
+    {
+        get
+        {
+            if (_categories == null)
+            {
+                _categories = new CategoryRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _categories;
+        }
+    }
+    public IBookCategory BookCategories
+    {
+        get
+        {
+            if (_bookcategories == null)
+            {
+                _bookcategories = new BookCategoryRepository(_context); // Remember putting the base in the repository of this entity
+            }
+            return _bookcategories;
         }
     }
     public Task<int> SaveAsync()

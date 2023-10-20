@@ -30,6 +30,9 @@ public class MappingProfiles : Profile
         CreateMap<TipoMovInventario,TipoMovInventarioDto>().ReverseMap();
         CreateMap<TipoPersona,TipoPersonaDto>().ReverseMap();
         CreateMap<UbicacionPersona,UbicacionPersonaDto>().ReverseMap();
+        CreateMap<Book,BookDto>().ReverseMap();
+        CreateMap<Category,CategoryDto>().ReverseMap();
+        CreateMap<BookCategory,BookCategoryDto>().ReverseMap();
         
     }
 }

@@ -43,6 +43,9 @@ public class FarmaciaContext : DbContext
     public DbSet<TipoMovInventario> TipoMovInventarios { get; set; }
     public DbSet<TipoPersona> TipoPersonas { get; set; }
     public DbSet<UbicacionPersona> UbicacionPersonas { get; set; }
+    public DbSet<Book> Books { get; set; }
+    public DbSet<Category> Categories{ get; set; }
+    public DbSet<BookCategory> BookCategories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -3,6 +3,7 @@ using System;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(FarmaciaContext))]
-    partial class FarmaciaContextModelSnapshot : ModelSnapshot
+    [Migration("20231019222618_BandCMigration")]
+    partial class BandCMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,6 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<int>("IdCategoryFk")
                         .HasColumnType("int");
-
-                    b.Property<string>("Nota")
-                        .HasColumnType("longtext");
 
                     b.HasKey("IdBookFk", "IdCategoryFk");
 

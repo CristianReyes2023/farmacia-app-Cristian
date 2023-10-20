@@ -25,6 +25,9 @@ public interface IUnitOfWork
     ITipoMovInventario TipoMovInventarios {get;}
     ITipoPersona TipoPersonas {get;}
     IUbicacionPersona UbicacionPersonas {get;}
+    IBook Books {get;}
+    ICategory Categories {get;}
+    IBookCategory BookCategories {get;}
 
     Task<int> SaveAsync();
 }
